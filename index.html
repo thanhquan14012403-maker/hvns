@@ -586,393 +586,403 @@
             </div>
         </div>
     </div>
-   <!-- Enrollment & Store Section -->
-    <section id="enroll" class="py-24 bg-gray-100">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <div class="bg-white p-6 md:p-12 rounded-[2rem] shadow-2xl border border-gray-200">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl md:text-4xl font-black uppercase italic">Phiếu ghi danh <span class="text-red-600">& Mua phụ kiện</span></h2>
-                    <p class="text-gray-500 font-bold text-xs uppercase mt-2 italic">⚠️ Đóng tối thiểu 02 tháng học phí cho khóa đầu</p>
+
+<!-- Enrollment Form -->
+    <section id="enroll" class="py-12 bg-gray-100 no-print">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white p-6 md:p-10 rounded-[2.5rem] shadow-xl border border-gray-200">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-black italic uppercase">Phiếu ghi <span class="text-red-600">Học phí</span></h2>
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mt-2">Đăng ký khóa đào tạo mới</p>
                 </div>
-                
+
                 <form id="footballForm" class="space-y-8">
-                    <!-- 1. Thông tin cá nhân -->
-                    <div class="space-y-4">
-                        <p class="text-sm font-black uppercase text-red-600 italic border-b-2 border-red-100 pb-2 flex items-center">
-                            <i class="fas fa-user-edit mr-2"></i> Thông tin học viên
-                        </p>
+                    <!-- Thông tin cơ bản -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" id="parentName" placeholder="Họ tên phụ huynh *" class="w-full px-5 py-4 rounded-xl border bg-gray-50 focus:border-red-600 outline-none transition font-medium" required>
+                        <input type="tel" id="phoneNumber" placeholder="Số điện thoại Zalo *" class="w-full px-5 py-4 rounded-xl border bg-gray-50 focus:border-red-600 outline-none transition font-medium" required>
+                        <input type="text" id="studentName" placeholder="Họ tên học viên *" class="w-full px-5 py-4 rounded-xl border bg-gray-50 focus:border-red-600 outline-none transition font-medium" required>
+                        <input type="number" id="birthYear" placeholder="Năm sinh của bé *" class="w-full px-5 py-4 rounded-xl border bg-gray-50 focus:border-red-600 outline-none transition font-medium" required>
+                    </div>
+
+                    <!-- Lịch học & Khung giờ -->
+                    <div class="space-y-4 pt-4 border-t border-dashed">
+                        <p class="text-xs font-black uppercase text-gray-500 italic">1. Địa điểm, Loại sân & Lịch tập</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input type="text" id="parentName" placeholder="Họ tên phụ huynh *" class="w-full px-5 py-4 rounded-xl border outline-none focus:border-red-600 transition shadow-sm bg-gray-50" required>
-                            <input type="tel" id="phoneNumber" placeholder="Số điện thoại Zalo *" class="w-full px-5 py-4 rounded-xl border outline-none focus:border-red-600 transition shadow-sm bg-gray-50" required>
-                            <input type="text" id="studentName" placeholder="Họ tên học viên *" class="w-full px-5 py-4 rounded-xl border outline-none focus:border-red-600 transition shadow-sm bg-gray-50" required>
-                            <input type="number" id="birthYear" placeholder="Năm sinh học viên *" class="w-full px-5 py-4 rounded-xl border outline-none focus:border-red-600 transition shadow-sm bg-gray-50" required>
-                        </div>
-                    </div>
-
-                    <!-- 2. Chọn cơ sở & Lịch học -->
-                    <div class="space-y-4 bg-gray-50 p-6 rounded-3xl border border-dashed border-gray-300">
-                        <p class="text-sm font-black uppercase text-navy-900 italic flex items-center mb-4">
-                            <i class="fas fa-calendar-alt mr-2"></i> Đăng ký lịch tập luyện theo cơ sở
-                        </p>
-                        <div class="space-y-4">
-                            <select id="locationSelect" onchange="updateLogic()" class="w-full px-5 py-4 rounded-xl border-2 border-gray-100 outline-none focus:border-red-600 transition shadow-sm font-bold text-sm bg-white cursor-pointer">
-                                <option value="cs1">Cơ sở 1: Bắc Hải (137 Bắc Hải, Q.10)</option>
-                                <option value="cs2" selected>Cơ sở 2: Phú Thọ (219 Lý Thường Kiệt, Q.11)</option>
+                            <select id="locationSelect" onchange="updateLogic()" class="w-full px-4 py-4 rounded-xl border bg-gray-50 font-bold text-sm outline-none cursor-pointer">
+                                <option value="cs2">Cơ sở 2: Phú Thọ (Q.11)</option>
+                                <option value="cs1">Cơ sở 1: Bắc Hải (Q.10)</option>
                             </select>
-                            
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <input type="radio" id="pitch5" name="pitchType" value="5" class="hidden radio-custom" checked onchange="updateLogic()">
-                                    <label for="pitch5" class="block w-full text-center py-4 border-2 rounded-xl cursor-pointer font-bold transition uppercase text-xs">Lớp Sân 5</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="pitch7" name="pitchType" value="7" class="hidden radio-custom" onchange="updateLogic()">
-                                    <label for="pitch7" id="labelPitch7" class="block w-full text-center py-4 border-2 rounded-xl cursor-pointer font-bold transition uppercase text-xs">Lớp Sân 7</label>
-                                </div>
+                            <div class="flex gap-2">
+                                <input type="radio" id="p5" name="pType" value="5" class="hidden radio-custom" checked onchange="updateLogic()"><label for="p5" class="flex-1 text-center py-4 border rounded-xl font-bold text-[10px] cursor-pointer">SÂN 5</label>
+                                <input type="radio" id="p7" name="pType" value="7" class="hidden radio-custom" onchange="updateLogic()"><label for="p7" id="labelP7" class="flex-1 text-center py-4 border rounded-xl font-bold text-[10px] cursor-pointer">SÂN 7</label>
                             </div>
                         </div>
 
-                        <div class="space-y-4">
-                            <p class="text-[10px] font-black uppercase text-gray-500 italic">Bước 1: Chọn các buổi tập trong tuần:</p>
-                            <div class="flex flex-wrap gap-2" id="days-container">
-                                <input type="checkbox" id="t2" value="T2" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t2" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T2</label>
-                                <input type="checkbox" id="t3" value="T3" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t3" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T3</label>
-                                <input type="checkbox" id="t4" value="T4" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t4" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T4</label>
-                                <input type="checkbox" id="t5" value="T5" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t5" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T5</label>
-                                <input type="checkbox" id="t6" value="T6" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t6" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T6</label>
-                                <input type="checkbox" id="t7" value="T7" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t7" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T7</label>
-                                <input type="checkbox" id="cn" value="CN" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="cn" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">CN</label>
-                            </div>
-                            
-                            <div id="time-selection-area" class="mt-6 space-y-4 hidden animate-in slide-in-from-top duration-300">
-                                <p class="text-[10px] font-black uppercase text-red-600 italic border-t pt-4">Bước 2: Chọn khung giờ chi tiết cho từng buổi:</p>
-                                <div id="time-slots-container" class="space-y-3">
-                                    <!-- Dynamic time slots appear here -->
-                                </div>
+                        <div class="space-y-2">
+                             <p class="text-[10px] font-bold text-gray-400 uppercase italic">Chọn ngày tập luyện (Phí tính theo số buổi/tuần):</p>
+                             <div class="flex flex-wrap gap-2" id="days-container">
+                                <input type="checkbox" id="t2" value="T2" class="hidden checkbox-custom day-check" onchange="updateLogic()"><label for="t2" class="w-12 h-12 border rounded-xl flex items-center justify-center font-bold text-xs cursor-pointer">T2</label>
+                                <input type="checkbox" id="t3" value="T3" class="hidden checkbox-custom day-check" onchange="updateLogic()"><label for="t3" class="w-12 h-12 border rounded-xl flex items-center justify-center font-bold text-xs cursor-pointer">T3</label>
+                                <input type="checkbox" id="t4" value="T4" class="hidden checkbox-custom day-check" onchange="updateLogic()"><label for="t4" class="w-12 h-12 border rounded-xl flex items-center justify-center font-bold text-xs cursor-pointer">T4</label>
+                                <input type="checkbox" id="t5" value="T5" class="hidden checkbox-custom day-check" onchange="updateLogic()"><label for="t5" class="w-12 h-12 border rounded-xl flex items-center justify-center font-bold text-xs cursor-pointer">T5</label>
+                                <input type="checkbox" id="t6" value="T6" class="hidden checkbox-custom day-check" onchange="updateLogic()"><label for="t6" class="w-12 h-12 border rounded-xl flex items-center justify-center font-bold text-xs cursor-pointer">T6</label>
+                                <input type="checkbox" id="t7" value="T7" class="hidden checkbox-custom day-check" onchange="updateLogic()"><label for="t7" class="w-12 h-12 border rounded-xl flex items-center justify-center font-bold text-xs cursor-pointer">T7</label>
+                                <input type="checkbox" id="cn" value="CN" class="hidden checkbox-custom day-check" onchange="updateLogic()"><label for="cn" class="w-12 h-12 border rounded-xl flex items-center justify-center font-bold text-xs cursor-pointer">CN</label>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 3. Mua sắm phụ kiện -->
-                    <div class="space-y-6">
-                        <p class="text-sm font-black uppercase text-red-600 italic border-b-2 border-red-100 pb-2 flex items-center">
-                            <i class="fas fa-shopping-cart mr-2"></i> Mua sắm phụ kiện (Tùy chọn)
-                        </p>
+                        <div class="space-y-2">
+                            <p class="text-[10px] font-bold text-gray-400 uppercase italic">Chọn khung giờ tập luyện:</p>
+                            <select id="timeSlot" class="w-full px-4 py-4 rounded-xl border bg-gray-50 font-bold text-sm outline-none cursor-pointer" required onchange="calculateAll()">
+                                <!-- Cập nhật qua JS -->
+                            </select>
+                        </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="bg-white p-4 rounded-2xl border-2 border-gray-100 shadow-sm flex flex-col items-center">
-                                <p class="text-[10px] font-bold text-gray-400 uppercase">Đồng phục học viện</p>
-                                <p class="text-lg font-black text-red-600 my-1">120.000đ</p>
-                                <div class="flex items-center space-x-3 mt-2">
-                                    <input type="number" id="qtyUniform" value="0" min="0" class="w-20 px-2 py-2 border rounded-lg text-center font-bold outline-none focus:border-red-600" onchange="calculateTotal()">
-                                </div>
-                            </div>
-                            <div class="bg-white p-4 rounded-2xl border-2 border-gray-100 shadow-sm flex flex-col items-center">
-                                <p class="text-[10px] font-bold text-gray-400 uppercase">Vớ bóng đá (đôi)</p>
-                                <p class="text-lg font-black text-red-600 my-1">25.000đ</p>
-                                <div class="flex items-center space-x-3 mt-2">
-                                    <input type="number" id="qtySocks" value="0" min="0" class="w-20 px-2 py-2 border rounded-lg text-center font-bold outline-none focus:border-red-600" onchange="calculateTotal()">
-                                </div>
-                            </div>
-                            <div class="bg-white p-4 rounded-2xl border-2 border-gray-100 shadow-sm flex flex-col items-center">
-                                <p class="text-[10px] font-bold text-gray-400 uppercase">Giày bóng đá</p>
-                                <p class="text-lg font-black text-red-600 my-1">220.000đ</p>
-                                <div class="flex flex-col space-y-2 w-full mt-2">
-                                    <div class="flex items-center justify-center space-x-3">
-                                        <input type="checkbox" id="buyShoes" class="w-5 h-5 accent-red-600" onchange="toggleShoeInput()">
-                                        <span class="text-xs font-bold text-gray-500">Mua giày</span>
+                        <p id="noteLogic" class="text-[10px] text-red-500 italic font-bold"></p>
+                    </div>
+
+                    <!-- Trang bị -->
+                    <div class="space-y-4 pt-4 border-t border-dashed">
+                        <p class="text-xs font-black uppercase text-gray-500 italic">2. Đăng ký Trang bị & Đồng phục</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Bộ Đồng Phục -->
+                            <div class="item-card flex flex-col justify-between" id="cardUniform">
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h4 class="font-bold text-sm">Đồng phục</h4>
+                                        <span class="text-red-600 font-black text-xs">120k</span>
                                     </div>
-                                    <input type="number" id="shoeSize" placeholder="Size" class="hidden w-full px-3 py-2 border rounded-lg text-center font-bold outline-none focus:border-red-600" onchange="calculateTotal()">
+                                    <select id="sizeUniform" class="w-full text-xs p-2 border rounded-lg bg-white outline-none mb-4">
+                                        <option value="">Chọn Size Áo</option>
+                                        <option value="S">Size S</option>
+                                        <option value="M">Size M</option>
+                                        <option value="L">Size L</option>
+                                        <option value="XL">Size XL</option>
+                                        <option value="XXL">Size XXL</option>
+                                    </select>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <button type="button" class="qty-btn" onclick="updateQty('qtyUniform', -1)">-</button>
+                                        <input type="number" id="qtyUniform" value="1" class="w-6 text-center font-bold text-sm bg-transparent outline-none" readonly>
+                                        <button type="button" class="qty-btn" onclick="updateQty('qtyUniform', 1)">+</button>
+                                    </div>
+                                    <span class="text-xs font-bold text-gray-400" id="subUniform">120k</span>
+                                </div>
+                            </div>
+
+                            <!-- Vớ -->
+                            <div class="item-card flex flex-col justify-between" id="cardSock">
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h4 class="font-bold text-sm">Vớ (Tất)</h4>
+                                        <span class="text-red-600 font-black text-xs">25k</span>
+                                    </div>
+                                    <p class="text-[10px] text-gray-400 italic mb-4">Dài chuyên dụng</p>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <button type="button" class="qty-btn" onclick="updateQty('qtySock', -1)">-</button>
+                                        <input type="number" id="qtySock" value="0" class="w-6 text-center font-bold text-sm bg-transparent outline-none" readonly>
+                                        <button type="button" class="qty-btn" onclick="updateQty('qtySock', 1)">+</button>
+                                    </div>
+                                    <span class="text-xs font-bold text-gray-400" id="subSock">0k</span>
+                                </div>
+                            </div>
+
+                            <!-- Giày -->
+                            <div class="item-card flex flex-col justify-between" id="cardShoe">
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h4 class="font-bold text-sm">Giày bóng đá</h4>
+                                        <span class="text-red-600 font-black text-xs">220k</span>
+                                    </div>
+                                    <select id="sizeShoe" class="w-full text-xs p-2 border rounded-lg bg-white outline-none mb-4">
+                                        <option value="">Chọn Size Giày</option>
+                                        <script>for(let i=34; i<=44; i++) document.write(`<option value="${i}">Size ${i}</option>`);</script>
+                                    </select>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <button type="button" class="qty-btn" onclick="updateQty('qtyShoe', -1)">-</button>
+                                        <input type="number" id="qtyShoe" value="0" class="w-6 text-center font-bold text-sm bg-transparent outline-none" readonly>
+                                        <button type="button" class="qty-btn" onclick="updateQty('qtyShoe', 1)">+</button>
+                                    </div>
+                                    <span class="text-xs font-bold text-gray-400" id="subShoe">0k</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 4. Tổng cộng và Dự toán -->
-                    <div class="bg-gray-900 p-8 rounded-[2rem] text-white flex flex-col md:flex-row justify-between items-center gap-6 border-4 border-red-600/30 shadow-2xl">
+                    <!-- Footer & Total -->
+                    <div class="bg-gray-900 p-8 rounded-[2rem] text-white flex flex-col md:flex-row justify-between items-center gap-6">
                         <div class="text-center md:text-left">
-                            <p class="text-[10px] text-yellow-400 font-bold uppercase tracking-widest mb-1">Dự kiến chi phí thanh toán khóa đầu</p>
-                            <p id="summaryLabel" class="text-sm text-gray-400 italic">Vui lòng điền đủ thông tin...</p>
+                            <p class="text-[10px] text-yellow-400 font-bold uppercase mb-1 tracking-widest">TỔNG PHÍ KHÓA ĐẦU (2 THÁNG + TRANG BỊ)</p>
+                            <p id="calc-detail" class="text-xs text-gray-400 italic font-medium">Đang tính toán...</p>
                         </div>
-                        <div class="text-right">
-                            <div class="text-5xl font-black text-white" id="totalDisplay">0đ</div>
-                            <p class="text-[9px] text-gray-500 uppercase mt-1 tracking-tighter">*Học phí 2 tháng + Phụ kiện</p>
-                        </div>
+                        <div class="text-4xl font-black" id="totalAmount">0đ</div>
                     </div>
 
-                    <button type="submit" class="w-full bg-red-600 text-white font-black py-6 rounded-2xl text-xl uppercase shadow-xl hover:bg-red-700 transition transform hover:scale-[1.01] active:scale-95">Xác Nhận & Xuất Hóa Đơn</button>
+                    <button type="submit" class="w-full bg-red-600 text-white font-black py-5 rounded-2xl text-lg uppercase shadow-xl hover:bg-red-700 transition transform hover:scale-[1.01]">XUẤT HÓA ĐƠN GHI DANH</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Modal Hóa Đơn (Invoice) -->
-    <div id="invoiceModal" class="modal">
+    <!-- Modal Invoice -->
+    <div id="invoiceModal" class="modal no-print">
         <div class="modal-content">
-            <div class="bg-slate-900 text-white p-6 flex justify-between items-center">
-                <h3 class="text-2xl font-black uppercase italic tracking-wider">Hóa đơn đăng ký tạm tính</h3>
-                <button onclick="closeInvoice()" class="text-white hover:text-gray-200 text-4xl leading-none">&times;</button>
-            </div>
-            
-            <div class="invoice-box bg-white" id="invoicePrintArea">
-                <table>
-                    <tr class="top">
-                        <td colspan="2">
-                            <table>
-                                <tr>
-                                    <td class="title">
-                                        <img src="image_3ebd48.png" style="width: 80px;">
-                                        <div class="text-sm font-black text-gray-900 uppercase">Học Viện Nam Sơn</div>
-                                    </td>
-                                    <td style="text-align: right;">
-                                        Hóa đơn số: #<span id="invId"></span><br>
-                                        Ngày lập: <span id="invDate"></span>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    
-                    <tr class="information">
-                        <td colspan="2">
-                            <table style="margin-top: 20px; border-bottom: 2px solid #eee; padding-bottom: 20px;">
-                                <tr>
-                                    <td>
-                                        <strong>Phụ huynh:</strong> <span id="invParent"></span><br>
-                                        <strong>Liên hệ:</strong> <span id="invPhone"></span><br>
-                                        <strong>Cơ sở:</strong> <span id="invLocation"></span>
-                                    </td>
-                                    <td style="text-align: right;">
-                                        <strong>Học viên:</strong> <span id="invStudent"></span><br>
-                                        <strong>Năm sinh:</strong> <span id="invBirth"></span><br>
-                                        <strong>Lịch học:</strong> <span id="invSchedule" class="text-red-600 font-bold"></span>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    
-                    <tr class="heading">
-                        <td>Hạng mục đào tạo & Phụ kiện</td>
-                        <td style="text-align: right;">Thành tiền</td>
-                    </tr>
-                    
-                    <tbody id="invoiceItems"></tbody>
-                    
-                    <tr class="total">
-                        <td></td>
-                        <td style="text-align: right;">Tổng cộng: <span id="invTotal"></span></td>
-                    </tr>
-                </table>
-            </div>
+            <div class="p-8 md:p-12 relative">
+                <div class="flex justify-between items-start border-b-4 border-red-600 pb-6 mb-8">
+                    <div class="flex items-center space-x-4">
+                        <img src="image_3ebd48.png" alt="Logo" class="h-16 w-16" onerror="this.src='https://via.placeholder.com/60?text=NS'">
+                        <div>
+                            <h2 class="text-2xl font-black leading-none uppercase">Nam Sơn Academy</h2>
+                            <p class="text-[10px] font-bold text-red-600 mt-1 uppercase">Hóa đơn đăng ký & Biên nhận học phí</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-gray-400 uppercase">Mã: #NS<span id="invId">0000</span></p>
+                        <p class="text-xs font-bold" id="invDate"></p>
+                    </div>
+                </div>
 
-            <div class="bg-gray-100 p-6 flex justify-center space-x-4">
-                <button onclick="window.print()" class="bg-gray-800 text-white px-8 py-3 rounded-xl font-bold uppercase text-xs hover:bg-black transition">In hóa đơn</button>
-                <button onclick="closeInvoice()" class="bg-red-600 text-white px-8 py-3 rounded-xl font-bold uppercase text-xs hover:bg-red-700 transition">Hoàn tất</button>
+                <div class="grid grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase mb-2 italic">Phụ huynh</p>
+                        <p class="font-bold uppercase text-sm" id="invParent"></p>
+                        <p class="text-xs" id="invPhone"></p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase mb-2 italic">Học viên</p>
+                        <p class="font-bold uppercase text-sm" id="invStudent"></p>
+                        <p class="text-xs italic" id="invBirth"></p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+                    <div class="grid grid-cols-1 gap-3 text-xs" id="invDetails"></div>
+                </div>
+
+                <div class="border-t-2 border-dashed pt-6 flex justify-between items-center">
+                    <div>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase italic">Hình thức: Thanh toán khi ghi danh</p>
+                      
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase">TỔNG CỘNG</p>
+                        <p class="text-3xl font-black text-gray-900" id="invTotal"></p>
+                    </div>
+                </div>
+
+                <div class="mt-10 pt-10 border-t flex justify-between items-center no-print">
+                    <button onclick="window.print()" class="flex items-center space-x-2 text-xs font-black uppercase text-gray-500 hover:text-red-600">
+                        <i class="fas fa-print"></i> <span>In hóa đơn</span>
+                    </button>
+                    <button onclick="closeInvoice()" class="bg-black text-white px-8 py-3 rounded-xl font-bold uppercase text-xs">Đóng</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        const locSelect = document.getElementById('locationSelect');
-        const pitch5 = document.getElementById('pitch5');
-        const pitch7 = document.getElementById('pitch7');
-        const scheduleChecks = document.querySelectorAll('.schedule-check');
-        const timeSlotsContainer = document.getElementById('time-slots-container');
-        const timeSelectionArea = document.getElementById('time-selection-area');
-        
-        const qtyUniform = document.getElementById('qtyUniform');
-        const qtySocks = document.getElementById('qtySocks');
-        const buyShoes = document.getElementById('buyShoes');
-        const shoeSize = document.getElementById('shoeSize');
-        
-        const totalDisplay = document.getElementById('totalDisplay');
-        const summaryLabel = document.getElementById('summaryLabel');
+        const PRICES = { uniform: 120000, sock: 25000, shoe: 220000 };
+        let currentTotal = 0;
 
-        // LỊCH HỌC CHI TIẾT TỪ HÌNH ẢNH
-        const SCHEDULE_DATA = {
-            cs1: {
-                days: ['T3', 'T5', 'T7', 'CN'],
-                times: {
-                    default: ["17:00 - 19:00"]
-                }
-            },
-            cs2_s5: {
-                days: ['T2', 'T3', 'T4', 'T5', 'T7', 'CN'],
-                times: {
-                    'T2': ["17:15 - 19:15"],
-                    'T4': ["17:15 - 19:15"],
-                    'T3': ["17:30 - 19:30 (Lớp Nhỏ)", "17:15 - 19:15 (Lớp Lớn)"],
-                    'T5': ["17:30 - 19:30 (Lớp Nhỏ)", "17:15 - 19:15 (Lớp Lớn)"],
-                    'T7': ["07:30 - 09:30", "15:00 - 17:00", "17:00 - 19:00", "17:30 - 19:30"],
-                    'CN': ["07:30 - 09:30", "15:00 - 17:00", "17:00 - 19:00", "17:30 - 19:30"]
-                }
-            },
-            cs2_s7: {
-                days: ['T7', 'CN'],
-                times: {
-                    default: ["17:30 - 19:00"]
-                }
-            }
-        };
-
-        function scrollToSection(id) {
-            const el = document.getElementById(id);
-            if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
-        }
-
-        function toggleShoeInput() {
-            shoeSize.classList.toggle('hidden', !buyShoes.checked);
-            if (!buyShoes.checked) shoeSize.value = "";
-            calculateTotal();
-        }
-
-        function generateTimeSlots() {
-            const selectedDays = Array.from(scheduleChecks).filter(cb => cb.checked);
+        function updateQty(id, delta) {
+            const input = document.getElementById(id);
+            let val = parseInt(input.value) + delta;
+            if (val < 0) val = 0;
+            input.value = val;
             
-            if (selectedDays.length === 0) {
-                timeSelectionArea.classList.add('hidden');
-                return;
-            }
-
-            timeSelectionArea.classList.remove('hidden');
-            const currentSelections = {};
-            document.querySelectorAll('.day-time-select').forEach(sel => {
-                currentSelections[sel.dataset.day] = sel.value;
-            });
-
-            const loc = locSelect.value;
-            const isS7 = pitch7.checked;
-            let configKey = loc === 'cs1' ? 'cs1' : (isS7 ? 'cs2_s7' : 'cs2_s5');
-            const config = SCHEDULE_DATA[configKey];
-
-            timeSlotsContainer.innerHTML = "";
-            selectedDays.forEach(dayCb => {
-                const day = dayCb.value;
-                const options = config.times[day] || config.times.default;
-                
-                const div = document.createElement('div');
-                div.className = "flex flex-col sm:flex-row sm:items-center justify-between bg-white p-4 rounded-xl border border-gray-200 gap-3 shadow-sm";
-                div.innerHTML = `
-                    <span class="text-xs font-black text-gray-700 uppercase flex items-center">
-                        <i class="fas fa-clock mr-2 text-red-600"></i> ${dayCb.nextSibling.innerText}:
-                    </span>
-                    <select class="day-time-select w-full sm:w-auto px-4 py-2 rounded-lg border-2 text-xs font-bold outline-none focus:border-red-600 bg-white" data-day="${day}">
-                        ${options.map(opt => `<option value="${opt}" ${currentSelections[day] === opt ? 'selected' : ''}>${opt}</option>`).join('')}
-                    </select>
-                `;
-                timeSlotsContainer.appendChild(div);
-            });
+            const cardId = 'card' + id.replace('qty', '');
+            if (val > 0) document.getElementById(cardId).classList.add('active');
+            else document.getElementById(cardId).classList.remove('active');
+            
+            calculateAll();
         }
 
         function updateLogic() {
-            const loc = locSelect.value;
-            const isS7 = pitch7.checked;
-            
-            // Reset state
-            scheduleChecks.forEach(cb => {
-                cb.disabled = false;
-                cb.nextSibling.classList.remove('disabled-label');
-            });
+            const loc = document.getElementById('locationSelect').value;
+            const pType = document.querySelector('input[name="pType"]:checked').value;
+            const timeSelect = document.getElementById('timeSlot');
+            const note = document.getElementById('noteLogic');
+            const p7 = document.getElementById('p7');
+            const p5 = document.getElementById('p5');
 
-            let activeDays = [];
+            // Reset trạng thái ngày
+            const allDays = ['t2', 't3', 't4', 't5', 't6', 't7', 'cn'];
+            allDays.forEach(d => document.getElementById(d).disabled = false);
+            p7.disabled = false;
+            note.innerText = "";
+
+            let timeOptions = `<option value="">Chọn khung giờ *</option>`;
+            let selectedDays = [];
+            document.querySelectorAll('.day-check:checked').forEach(d => selectedDays.push(d.value));
+
             if (loc === 'cs1') {
-                pitch7.disabled = true;
-                if (isS7) pitch5.checked = true;
-                activeDays = SCHEDULE_DATA.cs1.days;
-            } else if (isS7) {
-                activeDays = SCHEDULE_DATA.cs2_s7.days;
+                // LOGIC BẮC HẢI
+                const restricted = ['t2', 't4', 't6'];
+                restricted.forEach(d => {
+                    const el = document.getElementById(d);
+                    el.checked = false;
+                    el.disabled = true;
+                });
+                p7.disabled = true;
+                if (pType === "7") p5.checked = true;
+                
+                timeOptions += `<option value="17:00 - 19:00">Duy nhất: 17:00 - 19:00</option>`;
+                note.innerText = "* Bắc Hải: Tập T3-5-7-CN | Khung giờ 17:00-19:00";
             } else {
-                activeDays = SCHEDULE_DATA.cs2_s5.days;
-            }
+                // LOGIC PHÚ THỌ
+                // 1. Loại bỏ Thứ 6 hoàn toàn
+                const t6 = document.getElementById('t6');
+                t6.checked = false;
+                t6.disabled = true;
 
-            // Disable days not in schedule
-            scheduleChecks.forEach(cb => {
-                if (!activeDays.includes(cb.value)) {
-                    cb.disabled = true;
-                    cb.checked = false;
-                    cb.nextSibling.classList.add('disabled-label');
-                }
-            });
-
-            generateTimeSlots();
-            calculateTotal();
-        }
-
-        function calculateTotal() {
-            let monthlyTuition = 0;
-            let label = "Chưa chọn lịch tập";
-            
-            const isS7 = pitch7.checked;
-            const count = Array.from(scheduleChecks).filter(cb => cb.checked).length;
-
-            if (count > 0) {
-                if (count >= 3) {
-                    monthlyTuition = 1500000;
-                    label = "Lớp Năng khiếu";
-                } else if (!isS7) {
-                    monthlyTuition = count === 1 ? 400000 : 650000;
-                    label = `Sân 5 (${count} buổi)`;
+                if (pType === "7") {
+                    // Sân 7 chỉ T7 CN và khung giờ duy nhất
+                    const restricted = ['t2', 't3', 't4', 't5'];
+                    restricted.forEach(d => {
+                        const el = document.getElementById(d);
+                        el.checked = false;
+                        el.disabled = true;
+                    });
+                    timeOptions += `<option value="17:30 - 19:00">Duy nhất: 17:30 - 19:00 (Sân 7)</option>`;
+                    note.innerText = "* Sân 7 Phú Thọ: Chỉ T7 & CN | 17:30 - 19:00";
                 } else {
-                    monthlyTuition = count === 1 ? 520000 : 850000;
-                    label = `Sân 7 (${count} buổi)`;
+                    // Sân 5 Phú Thọ - Logic khung giờ theo ngày
+                    const hasT24 = selectedDays.includes('T2') || selectedDays.includes('T4');
+                    const hasT35 = selectedDays.includes('T3') || selectedDays.includes('T5');
+                    const hasWeekend = selectedDays.includes('T7') || selectedDays.includes('CN');
+
+                    if (hasT24) {
+                        timeOptions += `<option value="17:15 - 19:15 (Nhóm nhỏ)">17:15 - 19:15 (T2-T4 Nhóm nhỏ)</option>`;
+                    }
+                    if (hasT35) {
+                        timeOptions += `<option value="17:15 - 19:15 (Nhóm lớn)">17:15 - 19:15 (T3-T5 Nhóm lớn)</option>`;
+                        timeOptions += `<option value="17:30 - 19:30">17:30 - 19:30 (T3-T5)</option>`;
+                    }
+                    if (hasWeekend) {
+                        timeOptions += `<option value="07:30 - 09:30">07:30 - 09:30 (Sáng)</option>`;
+                        timeOptions += `<option value="15:00 - 17:00">15:00 - 17:00 (Chiều)</option>`;
+                        timeOptions += `<option value="17:00 - 19:00 (Nhóm nhỏ)">17:00 - 19:00 (Nhóm nhỏ)</option>`;
+                        timeOptions += `<option value="17:30 - 19:30 (Nhóm lớn)">17:30 - 19:30 (Nhóm lớn)</option>`;
+                    }
+
+                    // Nếu chưa chọn ngày nào, hiển thị danh sách tham khảo
+                    if (selectedDays.length === 0) {
+                        timeOptions += `
+                            <optgroup label="Thứ 2 - Thứ 4">
+                                <option value="17:15 - 19:15 (Nhóm nhỏ)">17:15 - 19:15 (Nhóm nhỏ)</option>
+                            </optgroup>
+                            <optgroup label="Thứ 3 - Thứ 5">
+                                <option value="17:15 - 19:15 (Nhóm lớn)">17:15 - 19:15 (Nhóm lớn)</option>
+                                <option value="17:30 - 19:30">17:30 - 19:30</option>
+                            </optgroup>
+                            <optgroup label="Thứ 7 - CN">
+                                <option value="07:30 - 09:30">07:30 - 09:30</option>
+                                <option value="15:00 - 17:00">15:00 - 17:00</option>
+                                <option value="17:00 - 19:00 (Nhóm nhỏ)">17:00 - 19:00 (Nhóm nhỏ)</option>
+                                <option value="17:30 - 19:30 (Nhóm lớn)">17:30 - 19:30 (Nhóm lớn)</option>
+                            </optgroup>`;
+                    }
                 }
             }
 
-            const courseTuition = monthlyTuition * 2;
-            const accessoriesTotal = (parseInt(qtyUniform.value) || 0) * 120000 + 
-                                     (parseInt(qtySocks.value) || 0) * 25000 + 
-                                     (buyShoes.checked ? 220000 : 0);
-            
-            const total = courseTuition + accessoriesTotal;
-            totalDisplay.innerText = total.toLocaleString('vi-VN') + "đ";
-            
-            if (total > 0) {
-                summaryLabel.innerHTML = `<span class="text-yellow-400 font-bold">${label}</span><br>HP 2 tháng: ${courseTuition.toLocaleString('vi-VN')}đ + Phụ kiện: ${accessoriesTotal.toLocaleString('vi-VN')}đ`;
-            } else {
-                summaryLabel.innerText = "Vui lòng điền đủ thông tin...";
-            }
-            
-            return { courseTuition, total, label };
+            timeSelect.innerHTML = timeOptions;
+            calculateAll();
         }
 
-        function closeInvoice() { document.getElementById('invoiceModal').style.display = 'none'; }
+        function calculateAll() {
+            const pType = document.querySelector('input[name="pType"]:checked').value;
+            let dayCount = 0;
+            document.querySelectorAll('.day-check:checked').forEach(() => dayCount++);
 
-        document.getElementById('footballForm').onsubmit = function(e) {
+            let monthlyFee = 0;
+            let name = "";
+
+            if (dayCount === 1) {
+                monthlyFee = (pType === "5") ? 400000 : 520000;
+                name = `Sân ${pType} (1 buổi/tuần)`;
+            } else if (dayCount === 2) {
+                monthlyFee = (pType === "5") ? 650000 : 850000;
+                name = `Sân ${pType} (2 buổi/tuần)`;
+            } else if (dayCount >= 3) {
+                monthlyFee = 1500000;
+                name = "Khóa Năng Khiếu (3+ buổi/tuần)";
+            }
+
+            const tuitionTotal = monthlyFee * 2;
+            const qU = parseInt(document.getElementById('qtyUniform').value);
+            const qSo = parseInt(document.getElementById('qtySock').value);
+            const qSh = parseInt(document.getElementById('qtyShoe').value);
+
+            const subU = qU * PRICES.uniform;
+            const subSo = qSo * PRICES.sock;
+            const subSh = qSh * PRICES.shoe;
+
+            document.getElementById('subUniform').innerText = (subU / 1000) + 'k';
+            document.getElementById('subSock').innerText = (subSo / 1000) + 'k';
+            document.getElementById('subShoe').innerText = (subSh / 1000) + 'k';
+
+            const equipTotal = subU + subSo + subSh;
+            currentTotal = tuitionTotal + equipTotal;
+
+            document.getElementById('totalAmount').innerText = currentTotal.toLocaleString('vi-VN') + "đ";
+            
+            if (monthlyFee > 0) {
+                document.getElementById('calc-detail').innerHTML = 
+                    `${name}: ${tuitionTotal.toLocaleString()}đ (2 tháng)` + 
+                    (equipTotal > 0 ? ` + Trang bị: ${equipTotal.toLocaleString()}đ` : '');
+            } else {
+                document.getElementById('calc-detail').innerText = "Vui lòng chọn ngày tập luyện...";
+            }
+        }
+
+        document.getElementById('footballForm').onsubmit = (e) => {
             e.preventDefault();
-            const data = calculateTotal();
-            if (data.total === 0) { alert("Vui lòng chọn lịch học!"); return; }
-
-            const scheduleElements = document.querySelectorAll('.day-time-select');
-            let scheduleStr = "";
-            scheduleElements.forEach((el, index) => {
-                scheduleStr += `${el.dataset.day} (${el.value})${index < scheduleElements.length - 1 ? ', ' : ''}`;
-            });
-
-            document.getElementById('invId').innerText = Math.floor(1000 + Math.random() * 9000);
-            document.getElementById('invDate').innerText = new Date().toLocaleDateString('vi-VN');
+            if (currentTotal === 0) { alert("Vui lòng chọn ngày tập luyện!"); return; }
+            if (!document.getElementById('timeSlot').value) { alert("Vui lòng chọn khung giờ cụ thể!"); return; }
+            
+            // Thông tin hóa đơn
             document.getElementById('invParent').innerText = document.getElementById('parentName').value;
-            document.getElementById('invPhone').innerText = document.getElementById('phoneNumber').value;
+            document.getElementById('invPhone').innerText = "SĐT: " + document.getElementById('phoneNumber').value;
             document.getElementById('invStudent').innerText = document.getElementById('studentName').value;
-            document.getElementById('invBirth').innerText = document.getElementById('birthYear').value;
-            document.getElementById('invLocation').innerText = locSelect.options[locSelect.selectedIndex].text;
-            document.getElementById('invSchedule').innerText = scheduleStr;
-            
-            const list = document.getElementById('invoiceItems');
-            list.innerHTML = `<tr class="item"><td>Khóa học 2 tháng (${data.label})</td><td style="text-align: right;">${data.courseTuition.toLocaleString('vi-VN')}đ</td></tr>`;
-            
-            const uCount = parseInt(qtyUniform.value) || 0;
-            if (uCount > 0) list.innerHTML += `<tr class="item"><td>Đồng phục (x${uCount})</td><td style="text-align: right;">${(uCount * 120000).toLocaleString('vi-VN')}đ</td></tr>`;
-            
-            const sCount = parseInt(qtySocks.value) || 0;
-            if (sCount > 0) list.innerHTML += `<tr class="item"><td>Vớ (x${sCount})</td><td style="text-align: right;">${(sCount * 25000).toLocaleString('vi-VN')}đ</td></tr>`;
-            
-            if (buyShoes.checked) list.innerHTML += `<tr class="item"><td>Giày (Size: ${shoeSize.value})</td><td style="text-align: right;">220.000đ</td></tr>`;
+            document.getElementById('invBirth').innerText = "Năm sinh: " + document.getElementById('birthYear').value;
+            document.getElementById('invDate').innerText = "Ngày lập: " + new Date().toLocaleDateString('vi-VN');
+            document.getElementById('invId').innerText = Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('invTotal').innerText = currentTotal.toLocaleString('vi-VN') + "đ";
 
-            document.getElementById('invTotal').innerText = data.total.toLocaleString('vi-VN') + "đ";
+            let detailHtml = "";
+            const loc = document.getElementById('locationSelect').options[document.getElementById('locationSelect').selectedIndex].text;
+            const pType = document.querySelector('input[name="pType"]:checked').value;
+            const timeslot = document.getElementById('timeSlot').value;
+            let days = [];
+            document.querySelectorAll('.day-check:checked').forEach(d => days.push(d.value));
+
+            const equipVal = (parseInt(document.getElementById('qtyUniform').value)*PRICES.uniform + parseInt(document.getElementById('qtySock').value)*PRICES.sock + parseInt(document.getElementById('qtyShoe').value)*PRICES.shoe);
+            const tuitionVal = currentTotal - equipVal;
+
+            detailHtml += `<div class="flex justify-between font-bold border-b pb-1 mb-2 uppercase text-[10px] text-gray-500"><span>Mục đăng ký</span><span>Học phí</span></div>`;
+            detailHtml += `<div class="flex justify-between"><span>Học phí Sân ${pType} (2 tháng) <br><small class="text-gray-400 font-bold uppercase">${loc} | ${days.join(', ')} | ${timeslot}</small></span><span class="font-bold">${tuitionVal.toLocaleString()}đ</span></div>`;
+            
+            const qU = parseInt(document.getElementById('qtyUniform').value);
+            const qSo = parseInt(document.getElementById('qtySock').value);
+            const qSh = parseInt(document.getElementById('qtyShoe').value);
+
+            if (qU > 0) detailHtml += `<div class="flex justify-between mt-2"><span>Đồng phục học viên (x${qU}) - Size: ${document.getElementById('sizeUniform').value || 'N/A'}</span><span>${(qU * PRICES.uniform).toLocaleString()}đ</span></div>`;
+            if (qSo > 0) detailHtml += `<div class="flex justify-between mt-1"><span>Vớ đá bóng (x${qSo})</span><span>${(qSo * PRICES.sock).toLocaleString()}đ</span></div>`;
+            if (qSh > 0) detailHtml += `<div class="flex justify-between mt-1"><span>Giày đá bóng (x${qSh}) - Size: ${document.getElementById('sizeShoe').value || 'N/A'}</span><span>${(qSh * PRICES.shoe).toLocaleString()}đ</span></div>`;
+
+            document.getElementById('invDetails').innerHTML = detailHtml;
             document.getElementById('invoiceModal').style.display = 'block';
         };
 
+        function closeInvoice() { document.getElementById('invoiceModal').style.display = 'none'; }
+        
+        // Khởi tạo logic ban đầu
         updateLogic();
     </script>
 </body>
