@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -586,230 +586,394 @@
             </div>
         </div>
     </div>
-
-    <!-- Enrollment Form -->
-    <section id="enroll" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl border border-gray-200">
+   <!-- Enrollment & Store Section -->
+    <section id="enroll" class="py-24 bg-gray-100">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="bg-white p-6 md:p-12 rounded-[2rem] shadow-2xl border border-gray-200">
                 <div class="text-center mb-10">
-                    <h2 class="text-3xl font-black uppercase italic">Đăng ký <span class="text-red-600">Ghi danh</span></h2>
-                    <div class="w-16 h-1 bg-red-600 mx-auto mt-2 rounded-full"></div>
+                    <h2 class="text-3xl md:text-4xl font-black uppercase italic">Phiếu ghi danh <span class="text-red-600">& Mua phụ kiện</span></h2>
+                    <p class="text-gray-500 font-bold text-xs uppercase mt-2 italic">⚠️ Đóng tối thiểu 02 tháng học phí cho khóa đầu</p>
                 </div>
                 
                 <form id="footballForm" class="space-y-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Phụ huynh</label>
+                    <!-- 1. Thông tin cá nhân -->
+                    <div class="space-y-4">
+                        <p class="text-sm font-black uppercase text-red-600 italic border-b-2 border-red-100 pb-2 flex items-center">
+                            <i class="fas fa-user-edit mr-2"></i> Thông tin học viên
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <input type="text" id="parentName" placeholder="Họ tên phụ huynh *" class="w-full px-5 py-4 rounded-xl border outline-none focus:border-red-600 transition shadow-sm bg-gray-50" required>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Liên hệ</label>
                             <input type="tel" id="phoneNumber" placeholder="Số điện thoại Zalo *" class="w-full px-5 py-4 rounded-xl border outline-none focus:border-red-600 transition shadow-sm bg-gray-50" required>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Tên học viên</label>
                             <input type="text" id="studentName" placeholder="Họ tên học viên *" class="w-full px-5 py-4 rounded-xl border outline-none focus:border-red-600 transition shadow-sm bg-gray-50" required>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Năm sinh</label>
-                            <input type="number" id="birthYear" placeholder="Năm sinh của bé *" class="w-full px-5 py-4 rounded-xl border outline-none focus:border-red-600 transition shadow-sm bg-gray-50" required>
+                            <input type="number" id="birthYear" placeholder="Năm sinh học viên *" class="w-full px-5 py-4 rounded-xl border outline-none focus:border-red-600 transition shadow-sm bg-gray-50" required>
                         </div>
                     </div>
 
-                    <div class="space-y-4">
-                        <p class="text-xs font-black uppercase text-gray-500 italic flex items-center">
-                            <span class="bg-red-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] mr-2">1</span>
-                            Chọn cơ sở tập luyện:
+                    <!-- 2. Chọn cơ sở & Lịch học -->
+                    <div class="space-y-4 bg-gray-50 p-6 rounded-3xl border border-dashed border-gray-300">
+                        <p class="text-sm font-black uppercase text-navy-900 italic flex items-center mb-4">
+                            <i class="fas fa-calendar-alt mr-2"></i> Đăng ký lịch tập luyện theo cơ sở
                         </p>
-                        <select id="locationSelect" onchange="updateLogic()" class="w-full px-5 py-4 rounded-xl border-2 border-gray-100 outline-none focus:border-red-600 transition shadow-sm font-bold text-sm bg-gray-50 cursor-pointer">
-                            <option value="cs1">Cơ sở 1: 137 đường Bắc Hải, Quận 10</option>
-                            <option value="cs2" selected>Cơ sở 2: Phú Thọ (Lý Thường Kiệt), Quận 11</option>
-                        </select>
-                    </div>
-
-                    <div class="space-y-4">
-                        <p class="text-xs font-black uppercase text-gray-500 italic flex items-center">
-                            <span class="bg-red-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] mr-2">2</span>
-                            Chọn loại sân tập:
-                        </p>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <input type="radio" id="pitch5" name="pitchType" value="5" class="hidden radio-custom pitch-radio" checked>
-                                <label for="pitch5" class="block w-full text-center py-4 border-2 rounded-xl cursor-pointer font-bold transition uppercase text-xs">
-                                    <i class="fas fa-futbol mr-2"></i> Lớp Sân 5
-                                </label>
-                            </div>
-                            <div>
-                                <input type="radio" id="pitch7" name="pitchType" value="7" class="hidden radio-custom pitch-radio">
-                                <label for="pitch7" id="labelPitch7" class="block w-full text-center py-4 border-2 rounded-xl cursor-pointer font-bold transition uppercase text-xs">
-                                    <i class="fas fa-users mr-2"></i> Lớp Sân 7
-                                </label>
+                        <div class="space-y-4">
+                            <select id="locationSelect" onchange="updateLogic()" class="w-full px-5 py-4 rounded-xl border-2 border-gray-100 outline-none focus:border-red-600 transition shadow-sm font-bold text-sm bg-white cursor-pointer">
+                                <option value="cs1">Cơ sở 1: Bắc Hải (137 Bắc Hải, Q.10)</option>
+                                <option value="cs2" selected>Cơ sở 2: Phú Thọ (219 Lý Thường Kiệt, Q.11)</option>
+                            </select>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <input type="radio" id="pitch5" name="pitchType" value="5" class="hidden radio-custom" checked onchange="updateLogic()">
+                                    <label for="pitch5" class="block w-full text-center py-4 border-2 rounded-xl cursor-pointer font-bold transition uppercase text-xs">Lớp Sân 5</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="pitch7" name="pitchType" value="7" class="hidden radio-custom" onchange="updateLogic()">
+                                    <label for="pitch7" id="labelPitch7" class="block w-full text-center py-4 border-2 rounded-xl cursor-pointer font-bold transition uppercase text-xs">Lớp Sân 7</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="space-y-4">
-                        <p class="text-xs font-black uppercase text-gray-500 italic flex items-center">
-                            <span class="bg-red-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] mr-2">3</span>
-                            Chọn các buổi tập mong muốn:
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <input type="checkbox" id="t2" value="T2" class="hidden checkbox-custom schedule-check"><label for="t2" class="px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs transition shadow-sm">T2</label>
-                            <input type="checkbox" id="t3" value="T3" class="hidden checkbox-custom schedule-check"><label for="t3" class="px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs transition shadow-sm">T3</label>
-                            <input type="checkbox" id="t4" value="T4" class="hidden checkbox-custom schedule-check"><label for="t4" class="px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs transition shadow-sm">T4</label>
-                            <input type="checkbox" id="t5" value="T5" class="hidden checkbox-custom schedule-check"><label for="t5" class="px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs transition shadow-sm">T5</label>
-                            <input type="checkbox" id="t6" value="T6" class="hidden checkbox-custom schedule-check"><label for="t6" class="px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs transition shadow-sm">T6</label>
-                            <input type="checkbox" id="t7" value="T7" class="hidden checkbox-custom schedule-check"><label for="t7" class="px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs transition shadow-sm">T7</label>
-                            <input type="checkbox" id="cn" value="CN" class="hidden checkbox-custom schedule-check"><label for="cn" class="px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs transition shadow-sm">CN</label>
+                        <div class="space-y-4">
+                            <p class="text-[10px] font-black uppercase text-gray-500 italic">Bước 1: Chọn các buổi tập trong tuần:</p>
+                            <div class="flex flex-wrap gap-2" id="days-container">
+                                <input type="checkbox" id="t2" value="T2" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t2" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T2</label>
+                                <input type="checkbox" id="t3" value="T3" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t3" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T3</label>
+                                <input type="checkbox" id="t4" value="T4" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t4" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T4</label>
+                                <input type="checkbox" id="t5" value="T5" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t5" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T5</label>
+                                <input type="checkbox" id="t6" value="T6" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t6" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T6</label>
+                                <input type="checkbox" id="t7" value="T7" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="t7" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">T7</label>
+                                <input type="checkbox" id="cn" value="CN" class="hidden checkbox-custom schedule-check" onchange="updateLogic()"><label for="cn" class="day-label px-5 py-3 border rounded-lg cursor-pointer font-bold text-xs bg-white transition shadow-sm">CN</label>
+                            </div>
+                            
+                            <div id="time-selection-area" class="mt-6 space-y-4 hidden animate-in slide-in-from-top duration-300">
+                                <p class="text-[10px] font-black uppercase text-red-600 italic border-t pt-4">Bước 2: Chọn khung giờ chi tiết cho từng buổi:</p>
+                                <div id="time-slots-container" class="space-y-3">
+                                    <!-- Dynamic time slots appear here -->
+                                </div>
+                            </div>
                         </div>
-                        <div id="notice-box" class="bg-blue-50 p-3 rounded-lg border border-blue-100 hidden text-[10px] text-blue-600 font-bold uppercase italic"></div>
                     </div>
 
-                    <div class="bg-gray-900 p-8 rounded-[2rem] text-white flex flex-col md:flex-row justify-between items-center gap-6 border-4 border-red-600/20">
+                    <!-- 3. Mua sắm phụ kiện -->
+                    <div class="space-y-6">
+                        <p class="text-sm font-black uppercase text-red-600 italic border-b-2 border-red-100 pb-2 flex items-center">
+                            <i class="fas fa-shopping-cart mr-2"></i> Mua sắm phụ kiện (Tùy chọn)
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-2xl border-2 border-gray-100 shadow-sm flex flex-col items-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Đồng phục học viện</p>
+                                <p class="text-lg font-black text-red-600 my-1">120.000đ</p>
+                                <div class="flex items-center space-x-3 mt-2">
+                                    <input type="number" id="qtyUniform" value="0" min="0" class="w-20 px-2 py-2 border rounded-lg text-center font-bold outline-none focus:border-red-600" onchange="calculateTotal()">
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl border-2 border-gray-100 shadow-sm flex flex-col items-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Vớ bóng đá (đôi)</p>
+                                <p class="text-lg font-black text-red-600 my-1">25.000đ</p>
+                                <div class="flex items-center space-x-3 mt-2">
+                                    <input type="number" id="qtySocks" value="0" min="0" class="w-20 px-2 py-2 border rounded-lg text-center font-bold outline-none focus:border-red-600" onchange="calculateTotal()">
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl border-2 border-gray-100 shadow-sm flex flex-col items-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Giày bóng đá</p>
+                                <p class="text-lg font-black text-red-600 my-1">220.000đ</p>
+                                <div class="flex flex-col space-y-2 w-full mt-2">
+                                    <div class="flex items-center justify-center space-x-3">
+                                        <input type="checkbox" id="buyShoes" class="w-5 h-5 accent-red-600" onchange="toggleShoeInput()">
+                                        <span class="text-xs font-bold text-gray-500">Mua giày</span>
+                                    </div>
+                                    <input type="number" id="shoeSize" placeholder="Size" class="hidden w-full px-3 py-2 border rounded-lg text-center font-bold outline-none focus:border-red-600" onchange="calculateTotal()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Tổng cộng và Dự toán -->
+                    <div class="bg-gray-900 p-8 rounded-[2rem] text-white flex flex-col md:flex-row justify-between items-center gap-6 border-4 border-red-600/30 shadow-2xl">
                         <div class="text-center md:text-left">
-                            <p class="text-[10px] text-yellow-400 font-bold uppercase tracking-widest mb-1">Dự toán học phí khóa đầu (2 tháng)</p>
-                            <p id="calc-label" class="text-sm text-gray-400 italic">Vui lòng chọn thông tin để xem dự toán...</p>
+                            <p class="text-[10px] text-yellow-400 font-bold uppercase tracking-widest mb-1">Dự kiến chi phí thanh toán khóa đầu</p>
+                            <p id="summaryLabel" class="text-sm text-gray-400 italic">Vui lòng điền đủ thông tin...</p>
                         </div>
-                        <div class="text-4xl font-black text-white" id="totalTuition">0đ</div>
+                        <div class="text-right">
+                            <div class="text-5xl font-black text-white" id="totalDisplay">0đ</div>
+                            <p class="text-[9px] text-gray-500 uppercase mt-1 tracking-tighter">*Học phí 2 tháng + Phụ kiện</p>
+                        </div>
                     </div>
 
-                    <button type="submit" class="w-full bg-red-600 text-white font-black py-5 rounded-2xl text-lg uppercase shadow-xl hover:bg-red-700 transition">Gửi Đăng Ký Tư Vấn</button>
+                    <button type="submit" class="w-full bg-red-600 text-white font-black py-6 rounded-2xl text-xl uppercase shadow-xl hover:bg-red-700 transition transform hover:scale-[1.01] active:scale-95">Xác Nhận & Xuất Hóa Đơn</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer class="bg-white py-10 border-t">
-        <div class="container mx-auto px-6 text-center">
-            <div class="flex justify-center items-center space-x-6 mb-6">
-                <img src="image_3ebd48.png" alt="Logo Nam Sơn" class="h-10 w-10 object-contain grayscale opacity-50">
-                <img src="image_3eb58b.png" alt="Logo CATPHCM" class="h-10 w-10 object-contain grayscale opacity-50">
+    <!-- Modal Hóa Đơn (Invoice) -->
+    <div id="invoiceModal" class="modal">
+        <div class="modal-content">
+            <div class="bg-slate-900 text-white p-6 flex justify-between items-center">
+                <h3 class="text-2xl font-black uppercase italic tracking-wider">Hóa đơn đăng ký tạm tính</h3>
+                <button onclick="closeInvoice()" class="text-white hover:text-gray-200 text-4xl leading-none">&times;</button>
             </div>
-            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">&copy; 2026 Nam Sơn Academy. All Rights Reserved.</p>
+            
+            <div class="invoice-box bg-white" id="invoicePrintArea">
+                <table>
+                    <tr class="top">
+                        <td colspan="2">
+                            <table>
+                                <tr>
+                                    <td class="title">
+                                        <img src="image_3ebd48.png" style="width: 80px;">
+                                        <div class="text-sm font-black text-gray-900 uppercase">Học Viện Nam Sơn</div>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        Hóa đơn số: #<span id="invId"></span><br>
+                                        Ngày lập: <span id="invDate"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr class="information">
+                        <td colspan="2">
+                            <table style="margin-top: 20px; border-bottom: 2px solid #eee; padding-bottom: 20px;">
+                                <tr>
+                                    <td>
+                                        <strong>Phụ huynh:</strong> <span id="invParent"></span><br>
+                                        <strong>Liên hệ:</strong> <span id="invPhone"></span><br>
+                                        <strong>Cơ sở:</strong> <span id="invLocation"></span>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <strong>Học viên:</strong> <span id="invStudent"></span><br>
+                                        <strong>Năm sinh:</strong> <span id="invBirth"></span><br>
+                                        <strong>Lịch học:</strong> <span id="invSchedule" class="text-red-600 font-bold"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr class="heading">
+                        <td>Hạng mục đào tạo & Phụ kiện</td>
+                        <td style="text-align: right;">Thành tiền</td>
+                    </tr>
+                    
+                    <tbody id="invoiceItems"></tbody>
+                    
+                    <tr class="total">
+                        <td></td>
+                        <td style="text-align: right;">Tổng cộng: <span id="invTotal"></span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="bg-gray-100 p-6 flex justify-center space-x-4">
+                <button onclick="window.print()" class="bg-gray-800 text-white px-8 py-3 rounded-xl font-bold uppercase text-xs hover:bg-black transition">In hóa đơn</button>
+                <button onclick="closeInvoice()" class="bg-red-600 text-white px-8 py-3 rounded-xl font-bold uppercase text-xs hover:bg-red-700 transition">Hoàn tất</button>
+            </div>
         </div>
-    </footer>
+    </div>
 
     <script>
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) window.scrollTo({ top: section.offsetTop - 80, behavior: 'smooth' });
-        }
-
-        const modal = document.getElementById('scheduleModal');
-        function openModal() { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; }
-        function closeModal() { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }
-        window.onclick = function(event) { if (event.target == modal) closeModal(); }
-
         const locSelect = document.getElementById('locationSelect');
         const pitch5 = document.getElementById('pitch5');
         const pitch7 = document.getElementById('pitch7');
-        const noticeBox = document.getElementById('notice-box');
-        const totalDisplay = document.getElementById('totalTuition');
-        const calcLabel = document.getElementById('calc-label');
+        const scheduleChecks = document.querySelectorAll('.schedule-check');
+        const timeSlotsContainer = document.getElementById('time-slots-container');
+        const timeSelectionArea = document.getElementById('time-selection-area');
         
-        const days = {
-            t2: document.getElementById('t2'),
-            t3: document.getElementById('t3'),
-            t4: document.getElementById('t4'),
-            t5: document.getElementById('t5'),
-            t6: document.getElementById('t6'),
-            t7: document.getElementById('t7'),
-            cn: document.getElementById('cn')
+        const qtyUniform = document.getElementById('qtyUniform');
+        const qtySocks = document.getElementById('qtySocks');
+        const buyShoes = document.getElementById('buyShoes');
+        const shoeSize = document.getElementById('shoeSize');
+        
+        const totalDisplay = document.getElementById('totalDisplay');
+        const summaryLabel = document.getElementById('summaryLabel');
+
+        // LỊCH HỌC CHI TIẾT TỪ HÌNH ẢNH
+        const SCHEDULE_DATA = {
+            cs1: {
+                days: ['T3', 'T5', 'T7', 'CN'],
+                times: {
+                    default: ["17:00 - 19:00"]
+                }
+            },
+            cs2_s5: {
+                days: ['T2', 'T3', 'T4', 'T5', 'T7', 'CN'],
+                times: {
+                    'T2': ["17:15 - 19:15"],
+                    'T4': ["17:15 - 19:15"],
+                    'T3': ["17:30 - 19:30 (Lớp Nhỏ)", "17:15 - 19:15 (Lớp Lớn)"],
+                    'T5': ["17:30 - 19:30 (Lớp Nhỏ)", "17:15 - 19:15 (Lớp Lớn)"],
+                    'T7': ["07:30 - 09:30", "15:00 - 17:00", "17:00 - 19:00", "17:30 - 19:30"],
+                    'CN': ["07:30 - 09:30", "15:00 - 17:00", "17:00 - 19:00", "17:30 - 19:30"]
+                }
+            },
+            cs2_s7: {
+                days: ['T7', 'CN'],
+                times: {
+                    default: ["17:30 - 19:00"]
+                }
+            }
         };
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+        }
+
+        function toggleShoeInput() {
+            shoeSize.classList.toggle('hidden', !buyShoes.checked);
+            if (!buyShoes.checked) shoeSize.value = "";
+            calculateTotal();
+        }
+
+        function generateTimeSlots() {
+            const selectedDays = Array.from(scheduleChecks).filter(cb => cb.checked);
+            
+            if (selectedDays.length === 0) {
+                timeSelectionArea.classList.add('hidden');
+                return;
+            }
+
+            timeSelectionArea.classList.remove('hidden');
+            const currentSelections = {};
+            document.querySelectorAll('.day-time-select').forEach(sel => {
+                currentSelections[sel.dataset.day] = sel.value;
+            });
+
+            const loc = locSelect.value;
+            const isS7 = pitch7.checked;
+            let configKey = loc === 'cs1' ? 'cs1' : (isS7 ? 'cs2_s7' : 'cs2_s5');
+            const config = SCHEDULE_DATA[configKey];
+
+            timeSlotsContainer.innerHTML = "";
+            selectedDays.forEach(dayCb => {
+                const day = dayCb.value;
+                const options = config.times[day] || config.times.default;
+                
+                const div = document.createElement('div');
+                div.className = "flex flex-col sm:flex-row sm:items-center justify-between bg-white p-4 rounded-xl border border-gray-200 gap-3 shadow-sm";
+                div.innerHTML = `
+                    <span class="text-xs font-black text-gray-700 uppercase flex items-center">
+                        <i class="fas fa-clock mr-2 text-red-600"></i> ${dayCb.nextSibling.innerText}:
+                    </span>
+                    <select class="day-time-select w-full sm:w-auto px-4 py-2 rounded-lg border-2 text-xs font-bold outline-none focus:border-red-600 bg-white" data-day="${day}">
+                        ${options.map(opt => `<option value="${opt}" ${currentSelections[day] === opt ? 'selected' : ''}>${opt}</option>`).join('')}
+                    </select>
+                `;
+                timeSlotsContainer.appendChild(div);
+            });
+        }
 
         function updateLogic() {
             const loc = locSelect.value;
-            let pitchTypeRadio = document.querySelector('input[name="pitchType"]:checked');
-            let pitchType = pitchTypeRadio ? pitchTypeRadio.value : "5";
-
-            Object.values(days).forEach(cb => {
+            const isS7 = pitch7.checked;
+            
+            // Reset state
+            scheduleChecks.forEach(cb => {
                 cb.disabled = false;
+                cb.nextSibling.classList.remove('disabled-label');
             });
-            pitch7.disabled = false;
-            noticeBox.classList.add('hidden');
 
+            let activeDays = [];
             if (loc === 'cs1') {
                 pitch7.disabled = true;
-                if (pitch7.checked) pitch5.checked = true;
-                pitchType = "5"; 
+                if (isS7) pitch5.checked = true;
+                activeDays = SCHEDULE_DATA.cs1.days;
+            } else if (isS7) {
+                activeDays = SCHEDULE_DATA.cs2_s7.days;
+            } else {
+                activeDays = SCHEDULE_DATA.cs2_s5.days;
+            }
 
-                [days.t2, days.t4, days.t6].forEach(cb => {
-                    cb.checked = false;
+            // Disable days not in schedule
+            scheduleChecks.forEach(cb => {
+                if (!activeDays.includes(cb.value)) {
                     cb.disabled = true;
-                });
-                
-                noticeBox.classList.remove('hidden');
-                noticeBox.innerText = "* Cơ sở Bắc Hải chỉ có lớp Sân 5 vào Thứ 3, 5, 7 và Chủ Nhật.";
-            } 
-            else {
-                if (pitchType === "5") {
-                    days.t6.checked = false;
-                    days.t6.disabled = true;
+                    cb.checked = false;
+                    cb.nextSibling.classList.add('disabled-label');
                 }
-                if (pitchType === "7") {
-                    [days.t2, days.t3, days.t4, days.t5, days.t6].forEach(cb => {
-                        cb.checked = false;
-                        cb.disabled = true;
-                    });
-                    noticeBox.classList.remove('hidden');
-                    noticeBox.innerText = "* Lớp Sân 7 tại Phú Thọ hiện chỉ mở vào Thứ 7 & Chủ Nhật.";
-                }
-            }
+            });
 
-            calculateTuition();
+            generateTimeSlots();
+            calculateTotal();
         }
 
-        function calculateTuition() {
-            let pitchTypeRadio = document.querySelector('input[name="pitchType"]:checked');
-            let pitchType = pitchTypeRadio ? pitchTypeRadio.value : "5";
-            let count = 0;
-            document.querySelectorAll('.schedule-check:checked').forEach(() => count++);
+        function calculateTotal() {
+            let monthlyTuition = 0;
+            let label = "Chưa chọn lịch tập";
             
-            let monthlyTotal = 0;
-            let label = "";
+            const isS7 = pitch7.checked;
+            const count = Array.from(scheduleChecks).filter(cb => cb.checked).length;
 
-            if (count === 0) {
-                monthlyTotal = 0;
-                label = "Vui lòng chọn ít nhất 1 buổi tập...";
-            } else if (count >= 3) {
-                monthlyTotal = 1500000;
-                label = "Lớp Năng Khiếu (3+ buổi/tuần)";
-            } else if (pitchType === "5") {
-                if (count === 1) { monthlyTotal = 400000; label = "Sân 5 Cơ Bản (1 buổi/tuần)"; }
-                else if (count === 2) { monthlyTotal = 650000; label = "Sân 5 Nâng Cao (2 buổi/tuần)"; }
-            } else if (pitchType === "7") {
-                if (count === 1) { monthlyTotal = 520000; label = "Sân 7 Cơ Bản (1 buổi/tuần)"; }
-                else if (count === 2) { monthlyTotal = 850000; label = "Sân 7 Nâng Cao (2 buổi/tuần)"; }
+            if (count > 0) {
+                if (count >= 3) {
+                    monthlyTuition = 1500000;
+                    label = "Lớp Năng khiếu";
+                } else if (!isS7) {
+                    monthlyTuition = count === 1 ? 400000 : 650000;
+                    label = `Sân 5 (${count} buổi)`;
+                } else {
+                    monthlyTuition = count === 1 ? 520000 : 850000;
+                    label = `Sân 7 (${count} buổi)`;
+                }
             }
 
-            const courseTotal = monthlyTotal * 2;
-            totalDisplay.innerText = courseTotal.toLocaleString('vi-VN') + "đ";
-            calcLabel.innerHTML = monthlyTotal > 0 
-                ? `${label} <br><span class='text-xs text-yellow-500 font-bold'>(${monthlyTotal.toLocaleString('vi-VN')}đ/tháng x 2 tháng)</span>`
-                : label;
+            const courseTuition = monthlyTuition * 2;
+            const accessoriesTotal = (parseInt(qtyUniform.value) || 0) * 120000 + 
+                                     (parseInt(qtySocks.value) || 0) * 25000 + 
+                                     (buyShoes.checked ? 220000 : 0);
+            
+            const total = courseTuition + accessoriesTotal;
+            totalDisplay.innerText = total.toLocaleString('vi-VN') + "đ";
+            
+            if (total > 0) {
+                summaryLabel.innerHTML = `<span class="text-yellow-400 font-bold">${label}</span><br>HP 2 tháng: ${courseTuition.toLocaleString('vi-VN')}đ + Phụ kiện: ${accessoriesTotal.toLocaleString('vi-VN')}đ`;
+            } else {
+                summaryLabel.innerText = "Vui lòng điền đủ thông tin...";
+            }
+            
+            return { courseTuition, total, label };
         }
 
-        document.querySelectorAll('.pitch-radio, .schedule-check').forEach(el => {
-            el.addEventListener('change', updateLogic);
-        });
+        function closeInvoice() { document.getElementById('invoiceModal').style.display = 'none'; }
+
+        document.getElementById('footballForm').onsubmit = function(e) {
+            e.preventDefault();
+            const data = calculateTotal();
+            if (data.total === 0) { alert("Vui lòng chọn lịch học!"); return; }
+
+            const scheduleElements = document.querySelectorAll('.day-time-select');
+            let scheduleStr = "";
+            scheduleElements.forEach((el, index) => {
+                scheduleStr += `${el.dataset.day} (${el.value})${index < scheduleElements.length - 1 ? ', ' : ''}`;
+            });
+
+            document.getElementById('invId').innerText = Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('invDate').innerText = new Date().toLocaleDateString('vi-VN');
+            document.getElementById('invParent').innerText = document.getElementById('parentName').value;
+            document.getElementById('invPhone').innerText = document.getElementById('phoneNumber').value;
+            document.getElementById('invStudent').innerText = document.getElementById('studentName').value;
+            document.getElementById('invBirth').innerText = document.getElementById('birthYear').value;
+            document.getElementById('invLocation').innerText = locSelect.options[locSelect.selectedIndex].text;
+            document.getElementById('invSchedule').innerText = scheduleStr;
+            
+            const list = document.getElementById('invoiceItems');
+            list.innerHTML = `<tr class="item"><td>Khóa học 2 tháng (${data.label})</td><td style="text-align: right;">${data.courseTuition.toLocaleString('vi-VN')}đ</td></tr>`;
+            
+            const uCount = parseInt(qtyUniform.value) || 0;
+            if (uCount > 0) list.innerHTML += `<tr class="item"><td>Đồng phục (x${uCount})</td><td style="text-align: right;">${(uCount * 120000).toLocaleString('vi-VN')}đ</td></tr>`;
+            
+            const sCount = parseInt(qtySocks.value) || 0;
+            if (sCount > 0) list.innerHTML += `<tr class="item"><td>Vớ (x${sCount})</td><td style="text-align: right;">${(sCount * 25000).toLocaleString('vi-VN')}đ</td></tr>`;
+            
+            if (buyShoes.checked) list.innerHTML += `<tr class="item"><td>Giày (Size: ${shoeSize.value})</td><td style="text-align: right;">220.000đ</td></tr>`;
+
+            document.getElementById('invTotal').innerText = data.total.toLocaleString('vi-VN') + "đ";
+            document.getElementById('invoiceModal').style.display = 'block';
+        };
 
         updateLogic();
-
-        document.getElementById('footballForm').onsubmit = (e) => {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerText;
-            btn.innerText = "ĐANG XỬ LÝ...";
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                alert("Đăng ký thành công! Chúng tôi sẽ liên hệ tư vấn sớm nhất.");
-                btn.innerText = originalText;
-                btn.disabled = false;
-                e.target.reset();
-                updateLogic();
-            }, 1000);
-        };
     </script>
 </body>
 </html>
